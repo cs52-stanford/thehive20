@@ -147,6 +147,19 @@
   color: rgb(73, 80, 87);
 }
 
+.donation-sort {
+  letter-spacing: 1px;
+  background-color: rgb(223, 223, 223);
+  text-transform: uppercase;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3a4c6e;
+  padding: 0.6rem 0.6rem;
+  margin: 0rem 0.25rem;
+  border-radius: 100rem;
+}
+
 @keyframes MoveUpDown {
   0%,
   100% {
