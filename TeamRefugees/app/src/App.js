@@ -9,7 +9,7 @@ import moment from "moment";
 import "./App.css";
 
 //the Donation component has been implemented for you.
-import Donation from "./donation.js"
+import Donation from "./donation.js";
 
 const App = () => {
   const [donations, setDonations] = useState([]);
@@ -35,6 +35,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;
