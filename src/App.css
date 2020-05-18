@@ -1,0 +1,207 @@
+.App {
+  text-align: center;
+}
+
+/** 
+  We've given you container the astronaut css. 
+  The rest you have to implement.
+*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-image: linear-gradient(to bottom, #192334, #b1c6bf); */
+  /* background-color: #004a98; */
+  background-color: #001484;
+  min-height: 100vh;
+}
+
+/*
+  classes for header.js
+*/
+.rows {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 45%;
+} /*
+.row-A {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 45%;
+}
+
+.row-B {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 45%;
+}
+
+.col-1B {
+  margin-top: 5vw;
+}
+
+.col-1 {
+  margin-top: 5vw;
+}
+
+.col-2 {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  min-width: 35vw;
+  font-size: calc(10px + 2vmin);
+  color: #fff;
+}
+
+.col-3 {
+  margin-top: 5vw;
+} */
+
+.sub-header {
+  font-size: 20px;
+  line-height: 1.5;
+  min-width: 35vw;
+}
+
+#totalTrees {
+  margin-top: 5vw;
+  font-size: 60px;
+  font-weight: 1000;
+}
+
+#trees_planted {
+  font-size: 24px;
+}
+
+.astronaut {
+  animation: MoveUpDown 4s linear infinite;
+  height: 20vh;
+  position: relative;
+}
+
+#plant_button {
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 5vh;
+  margin-bottom: 15vw;
+  border-radius: 5vh;
+  padding: 2vh;
+  background-color: #273654;
+  font-size: 20px;
+}
+
+#widget-style {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  font-family: Montserrat, sans-serif;
+  color: rgb(39, 54, 84);
+  font-size: 85%;
+  font-weight: 600;
+}
+
+#donation-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0.25rem !important;
+  padding-right: 0.25rem !important;
+  color: rgb(73, 80, 87);
+  background-color: rgb(255, 255, 255);
+}
+
+.donation-text {
+  width: 90%;
+  color: rgb(73, 80, 87);
+  padding: 0.75rem 0.75rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 0.25rem;
+  border-color: rgb(206, 212, 218);
+  height: calc(2.75em + 2px);
+}
+
+.tree-amount-button {
+  flex-basis: 31%;
+  max-width: 31%;
+  text-transform: uppercase;
+  line-height: 1.5;
+  padding-left: 0.25rem !important;
+  padding-right: 0.25rem !important;
+  margin-bottom: 0.5rem !important;
+  background-color: rgb(246, 246, 244);
+  color: rgb(102, 102, 102);
+  border-radius: 0.5rem;
+  padding: 1rem 0.75rem;
+}
+
+.next-button {
+  letter-spacing: 1px;
+  background-color: rgb(75, 114, 48);
+  text-transform: uppercase;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 100rem;
+}
+
+.previous-color {
+  background-color: rgb(246, 246, 244);
+  color: rgb(73, 80, 87);
+}
+
+.donation-sort {
+  letter-spacing: 1px;
+  background-color: rgb(223, 223, 223);
+  text-transform: uppercase;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3a4c6e;
+  padding: 0.6rem 0.6rem;
+  margin: 0rem 0.25rem;
+  border-radius: 100rem;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 25px;
+  }
+}
+
+/**
+  Other helpful details for the header.js css:
+  The plant button should have background-color: #273654;
+  If you have other questions with regard to the CSS take a 
+  look at our final product:
+    - Right click on any part of it on your browser (preferably Google Chrome)
+    - Click Inspect to see the raw HTML/ CSS that we used.
+    - You should be able to see all the css that we used when we designed the components.
+*/
+
+/*When you are implementing Card One/First Card, this is how you highlight a button*/
+.active {
+  background-color: #273654 !important;
+  color: #fff !important;
+}
