@@ -1,21 +1,19 @@
 import React, { Component, useState } from "react";
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 import { css } from "emotion";
 import moment from "moment";
 
-
 const Leaderboard = (props) => {
-
   return (
     <div>
       <div
-          className={css`
-            display: flex;
-            flex-direction: row;
-            margin: 5rem 0 5rem 0;
-          `}
-        >
+        className={css`
+          display: flex;
+          flex-direction: row;
+          margin: 5rem 0 5rem 0;
+        `}
+      >
         <div
           className={css`
             width: 576px;
@@ -25,7 +23,7 @@ const Leaderboard = (props) => {
             className={css`
               display: flex;
               flex-direction: column;
-              
+
               margin: 0 1rem 10rem 1rem;
             `}
           >
@@ -33,8 +31,8 @@ const Leaderboard = (props) => {
               className={css`
                 border-radius: calc(0.5rem - 1px) calc(0.5rem - 1px) 0 0;
                 flex-direction: column;
-                color: #4b7330;
-                background-color: #f6f6f4;
+                color: #004a98;
+                background-color: #ffffff;
                 padding: 1rem 1.25rem 0.8rem;
                 border-bottom: 1px solid #eee;
                 text-transform: uppercase !important;
@@ -62,18 +60,17 @@ const Leaderboard = (props) => {
                 font-weight: 600;
               `}
             >
-              <div className='donation-sort active'>
-                Most Recent
-              </div>
-              <div className='donation-sort'>
-                Most Trees
-              </div>
+              <div className="donation-sort active">Most Recent</div>
+              <div className="donation-sort">Most Trees</div>
             </div>
-            <div style={{height: '500px', overflowY:'scroll'}} className={css`
+            <div
+              style={{ height: "500px", overflowY: "scroll" }}
+              className={css`
                 color: #4b7330;
                 background-color: #f6f6f4;
                 padding: 1rem 1.25rem 0.8rem;
-              `}>
+              `}
+            >
               {props.donations}
             </div>
 
@@ -97,7 +94,7 @@ const Leaderboard = (props) => {
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="UNRefugeeAgency"
-          options={{height: '80.5%'}}
+          options={{ height: "80.5%" }}
         />
       </div>
     </div>
