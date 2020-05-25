@@ -9,6 +9,7 @@ import React, { Component } from "react";
 import { css } from "emotion";
 
 //Here is all the image files that you need
+import unLogo from "./images/unhcrLogo.svg";
 import title_img from "./images/SaveRef1.png";
 import astronaut from "./images/astronaut-sign.svg";
 import spaceship from "./images/spaceship.svg";
@@ -49,6 +50,9 @@ class Header extends Component {
   render() {
     return (
       <div>
+        <a href="https://www.unrefugees.org" class="logo">
+          <img src={unLogo} alt="UN_LOGO" height="50vh" width="100%" />
+        </a>
         <div id="chartdiv" style={{ width: "160vh", height: "100vh" }}></div>
       </div>
     );
