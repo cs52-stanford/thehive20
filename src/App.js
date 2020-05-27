@@ -3,6 +3,7 @@ import Header from "./header.js";
 import Form from "./form.js";
 import Leaderboard from "./leaderboard.js";
 import avatar from "./images/icon-badge-grove-2.svg";
+import CountdownTimer from "./countdown.jsx";
 
 import { css } from "emotion";
 import moment from "moment";
@@ -30,6 +31,7 @@ const App = () => {
     <div className="App">
       <div className="container">
         <Header />
+        <CountdownTimer />
         <Form addDonation={addDonation} />
         <Leaderboard donations={donations} />
       </div>
