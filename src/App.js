@@ -7,6 +7,7 @@ import avatar from "./images/icon-badge-grove-2.svg";
 import { css } from "emotion";
 import moment from "moment";
 import "./App.css";
+import rootRef from "./firebase.js";
 
 //the Donation component has been implemented for you.
 import Donation from "./donation.js";
