@@ -32,7 +32,11 @@ const EnterAmountWidget = (props) => {
           margin-top: 1rem;
         `}
       >
-        <div>$1 PLANTS A TREE</div>
+        <div>$1 = warm feet on a cold night</div>
+        <div>$5 = satisfiying meal in someone's belly</div>
+        <div>$10 = a place to sleep</div>
+        <div>$50 = a light in the dark</div>
+        <div>$50+ = a roof over someone's head</div>
         <img
           src={dots}
           className={css`
@@ -52,27 +56,27 @@ const EnterAmountWidget = (props) => {
           id="tree10"
           onClick={(event) => handleClick(props, event)}
         >
-          10
+          1
           <br />
-          Trees
+          badge
         </div>
         <div
           className="tree-amount-button active"
           id="tree20"
           onClick={(event) => handleClick(props, event)}
         >
-          20
+          5
           <br />
-          Trees
+          badge
         </div>
         <div
           className="tree-amount-button"
           id="tree50"
           onClick={(event) => handleClick(props, event)}
         >
-          50
+          10
           <br />
-          Trees
+          badge
         </div>
       </div>
       <div
@@ -123,7 +127,7 @@ const First_Card = (props) => {
             font-weight: 600;
           `}
         >
-          DONATE, JOIN A TEAM, COMPETE, SPREAD THE WORD!
+          DONATE FOR YOUR SCHOOL, COMPETE, SPREAD THE WORD!
         </div>
         {/* Hint: You'll be adding props to EnterAmountWidget as you go!*/}
         <EnterAmountWidget

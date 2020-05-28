@@ -13,6 +13,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-var firestore = firebase.firestore();
+const rootRef = firebase.firestore();
 
-export default firestore;
+export default rootRef;

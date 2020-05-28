@@ -13,7 +13,7 @@
   justify-content: center;
   /* background-image: linear-gradient(to bottom, #192334, #b1c6bf); */
   /* background-color: #004a98; */
-  background-color: #001484;
+  background-color: #e5f0f8;
   min-height: 100vh;
 }
 
@@ -72,7 +72,7 @@
   min-width: 35vw;
 }
 
-#totalTrees {
+#totalAmt {
   margin-top: 5vw;
   font-size: 60px;
   font-weight: 1000;
@@ -103,10 +103,9 @@
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
-  font-family: Montserrat, sans-serif;
-  color: rgb(39, 54, 84);
+  font-family: "proxima-nova", sans-serif;
   font-size: 85%;
-  font-weight: 600;
+  font-weight: 300;
 }
 
 #donation-style {
@@ -127,7 +126,7 @@
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   border-radius: 0.25rem;
   border-color: rgb(206, 212, 218);
   height: calc(2.75em + 2px);
@@ -149,11 +148,11 @@
 
 .next-button {
   letter-spacing: 1px;
-  background-color: rgb(75, 114, 48);
+  background-color: rgb(0, 0, 0);
   text-transform: uppercase;
-  font-family: Montserrat, sans-serif;
+  font-family: "proxima-nova", sans-serif;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 300;
   color: rgb(255, 255, 255);
   margin-top: 1rem;
   margin-right: 0.5rem;
@@ -169,11 +168,11 @@
 
 .donation-sort {
   letter-spacing: 1px;
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(225, 225, 225);
   text-transform: uppercase;
-  font-family: Montserrat, sans-serif;
+  font-family: "proxima-nova", sans-serif;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 300;
   color: #3a4c6e;
   padding: 0.6rem 0.6rem;
   margin: 0rem 0.25rem;

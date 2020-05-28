@@ -9,6 +9,7 @@ import React, { Component } from "react";
 import { css } from "emotion";
 
 //Here is all the image files that you need
+import unLogo from "./images/unhcrLogo.svg";
 import title_img from "./images/SaveRef1.png";
 import astronaut from "./images/astronaut-sign.svg";
 import spaceship from "./images/spaceship.svg";
@@ -19,7 +20,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4maps from "@amcharts/amcharts4/maps";
 
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
+import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
 
 // am4core.use;
 
@@ -27,9 +28,8 @@ class Header extends Component {
   componentDidMount() {
     am4core.useTheme(am4themes_animated);
     let map = am4core.create("chartdiv", am4maps.MapChart);
-    map.geodata = am4geodata_worldLow;
-
-    map.projection = new am4maps.projections.Miller();
+    map.geodata = am4geodata_usaHigh;
+    map.projection = new am4maps.projections.AlbersUsa();
     //series
     let polygonSeries = new am4maps.MapPolygonSeries();
     polygonSeries.useGeodata = true;
@@ -37,7 +37,7 @@ class Header extends Component {
     // ... chart code goes here ...
     let polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipText = "{name}";
-    polygonTemplate.fill = am4core.color("#74B266");
+    polygonTemplate.fill = am4core.color("#FF3600");
 
     this.map = map;
   }
@@ -50,7 +50,10 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+        <a href="https://www.unrefugees.org" class="logo">
+          <img src={unLogo} alt="UN_LOGO" height="50vh" width="100%" />
+        </a>
+        <div id="chartdiv" style={{ width: "160vh", height: "100vh" }}></div>
       </div>
     );
   }
