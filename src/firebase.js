@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+import 'firebase/firebase-firestore';
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -12,6 +13,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const rootRef = firebase.database().ref().child('react');
+const rootRef = firebase.firestore();
 
 export default rootRef;

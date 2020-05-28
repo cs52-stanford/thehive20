@@ -10,7 +10,7 @@ const Form = (props) => {
 
   //TODO: Your form implementation
   if (isFirstCard) return <First_Card setIsFirstCard={setIsFirstCard} setNumTrees={setNumTrees}/>;
-  else return <Second_Card setIsFirstCard={setIsFirstCard} addDonation={props.addDonation} numTrees={numTrees}/>;
+  else return <Second_Card setIsFirstCard={setIsFirstCard} numTrees={numTrees}/>;
  }
 
 export default Form;
