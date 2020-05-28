@@ -1,39 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./header.js";
 import Form from "./form.js";
 import Leaderboard from "./leaderboard.js";
-import avatar from "./images/icon-badge-grove-2.svg";
 import CountdownTimer from "./countdown.jsx";
 
 import { css } from "emotion";
 import moment from "moment";
 import "./App.css";
+import rootRef from "./firebase.js";
 
 //the Donation component has been implemented for you.
 import Donation from "./donation.js";
 
-const App = () => {
+const useFirestoreQuery = (ref, sortby) => {
   const [donations, setDonations] = useState([]);
 
-  const addDonation = (values) => {
-    setDonations([
-      ...donations,
-      <Donation
-        avatar={avatar}
-        name={values[0]}
-        numTrees={values[1]}
-        message={values[2]}
-      />,
-    ]);
-  };
+  useEffect(() => {
+    const donationRef = ref.collection('donation').orderBy(sortby, "desc");
+    return donationRef.onSnapshot(function(querySnapshot) {
+      let newState = [];
+      querySnapshot.forEach(function(doc) {
+        newState.push({
+          key: doc.id,
+          name: doc.data().displayName,
+          numTrees: doc.data().numTrees,
+          message: doc.data().message,
+          date: doc.data().date
+        });
+      })
+      setDonations(newState);
+    })
+  });
+
+  return donations;
+
+}
+
+const App = () => {
+
+  const [sortby, setSortby] = useState("date");
+
+  const donations = useFirestoreQuery(rootRef, sortby);
 
   return (
     <div className="App">
       <div className="container">
         <Header />
         <CountdownTimer />
-        <Form addDonation={addDonation} />
-        <Leaderboard donations={donations} />
+        <Form />
+        <Leaderboard donations={donations} setSortby={setSortby}/>
       </div>
     </div>
   );

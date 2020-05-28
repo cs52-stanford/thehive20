@@ -3,7 +3,8 @@ import { css } from "emotion";
 import moment from "moment";
 
 const Donation = (props) => {
-  var date = moment().format("L h:mm:ss A");
+  
+  //var date = moment().format("L h:mm:ss A");
 
   return (
     <div
@@ -31,6 +32,10 @@ const Donation = (props) => {
       />
 
       <span
+    //var date = moment().format("L h:mm:ss A");
+  
+    //return (
+      //<div
         className={css`
           display: flex;
           flex-direction: column;
@@ -84,7 +89,7 @@ const Donation = (props) => {
             color: grey;
           `}
         >
-          {date}
+          {props.date}
         </span>
 
         <span
