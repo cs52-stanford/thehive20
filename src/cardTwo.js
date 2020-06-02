@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { css } from "emotion";
 
+import rootRef from "./firebase.js";
+
+import moment from "moment";
+
 const handleChange = (props, event) => {
   let curr_id = event.target.id;
   switch(curr_id) {
@@ -21,7 +25,15 @@ const handlePrevious = (props) => {
 }
 
 const handleSubmit = (props) => {
-  props.addDonation([props.displayName, props.numTrees, props.message]);
+  var date = moment().format("L h:mm:ss A");
+  const donationRef = rootRef.collection('donation');
+  const new_donation = {
+    displayName: props.displayName,
+    numTrees: props.numTrees,
+    message: props.message,
+    date: date
+  }
+  donationRef.add(new_donation);
   props.setIsFirstCard(true);
 }
 
@@ -76,7 +88,7 @@ const Second_Card = (props) => {
         {/* Hint: You'll be adding props to DonationDetails as you go!*/}
         <DonationDetails displayName={displayName} setDisplayName={setDisplayName} email={email}
         setEmail={setEmail} message={message} setMessage={setMessage} setIsFirstCard={props.setIsFirstCard}
-        addDonation={props.addDonation} numTrees={props.numTrees}/>
+        numTrees={props.numTrees}/>
         <div
           className={css`
             border-radius: 0 0 calc(.5rem - 1px) calc(.5rem - 1px);
