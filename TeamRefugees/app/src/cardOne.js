@@ -8,6 +8,10 @@ const handleClick = (props, event) => {
   props.setSelected(event.target.id);
 }
 
+const handleChange = (props, event) => {
+    props.setCustomAmount(event.target.value);
+    props.setNumTrees(event.target.value);
+  }
 const handleNext = (props) => {
   props.setIsFirstCard(false);
   switch(props.selected) {
@@ -20,6 +24,8 @@ const handleNext = (props) => {
     case "tree50":
       props.setNumTrees(50);
       break;
+    case "entry3":
+      
   }
 }
 
@@ -33,6 +39,7 @@ const EnterAmountWidget = (props) =>  {
       <div className="tree-amount-button" id="tree10" onClick={(event) => handleClick(props, event)}>10<br/>Trees</div>
       <div className="tree-amount-button active" id="tree20" onClick={(event) => handleClick(props, event)}>20<br/>Trees</div>
       <div className="tree-amount-button" id="tree50" onClick={(event) => handleClick(props, event)}>50<br/>Trees</div>
+      <textarea id="entry3" className="donation-text" value={props.customAmount} onClick={(event) => handleClick(props, event)} onChange={(event) => handleChange(props, event)}/>
     </div>
     <div className={css`display: flex; flex-direction: row; justify-content: flex-end;`}>
       <div className="next-button" onClick={() => handleNext(props)}>Next</div>
@@ -41,6 +48,9 @@ const EnterAmountWidget = (props) =>  {
 }
 
 const First_Card = (props) => {
+  const numTreesPlaceHolder = "other amount";
+
+  const [customAmount, setCustomAmount] = useState(numTreesPlaceHolder);
 
   const default_button = "tree20"
   
@@ -75,7 +85,7 @@ const First_Card = (props) => {
           `}
         >JOIN #TEAMTREES. GIFT #TEAMTREES</div>
         {/* Hint: You'll be adding props to EnterAmountWidget as you go!*/}
-        <EnterAmountWidget selected={selectedButton} setSelected={setSelectedButton} setIsFirstCard={props.setIsFirstCard} setNumTrees={props.setNumTrees}/>
+        <EnterAmountWidget selected={selectedButton} setSelected={setSelectedButton} setIsFirstCard={props.setIsFirstCard} setNumTrees={props.setNumTrees} setCustomAmount={setCustomAmount} customAmount={customAmount}/>
         <div
           className={css`
             border-radius: 0 0 calc(.5rem - 1px) calc(.5rem - 1px);
