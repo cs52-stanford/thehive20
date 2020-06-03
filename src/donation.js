@@ -64,7 +64,7 @@ const Donation = (props) => {
 
           <span
             className={css`
-              background-color: rgb(255, 54, 0);
+              background-color: #5b92e5;
               border-radius: 2rem;
               margin-left: 1rem;
               padding: 0rem 1rem 0rem 1rem;
@@ -74,7 +74,7 @@ const Donation = (props) => {
               align-items: center;
             `}
           >
-            {props.numTrees} TREES
+            {props.numTrees} 
           </span>
         </span>
 

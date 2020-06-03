@@ -1,29 +1,72 @@
 import React, { useState, useEffect } from "react";
 import { css } from "emotion";
 import dots from "./images/dots.svg";
+import sockblack from "./images/sockblack.svg"
+import mealblack from "./images/mealblack.svg"
+import bedblack from "./images/bedblack.svg"
 
-const handleClick = (props, event) => {
-  document.getElementById(props.selected).classList.remove("active");
-  event.target.classList.add("active");
-  props.setSelected(event.target.id);
-};
 
-const handleNext = (props) => {
-  props.setIsFirstCard(false);
-  switch (props.selected) {
-    case "tree10":
-      props.setNumTrees(10);
-      break;
-    case "tree20":
-      props.setNumTrees(20);
-      break;
-    case "tree50":
-      props.setNumTrees(50);
-      break;
-  }
-};
+
+const SelectDonationButton = (props) => {
+
+  const handleClick = (event) => {
+    console.log(props.selected)
+    console.log(props.id)
+    props.setSelected(props.id);
+  };
+
+
+  return(
+    <div
+      className= {
+        "tree-amount-button" + 
+        (props.selected === props.id ? ' active' : '' )
+      }
+      id={props.id}
+      onClick={(event) => handleClick(event)}
+    >
+     <div> {props.amount} </div>
+      <img
+      src={props.image}
+      className={
+        css`max-width: 4.25rem;`
+      }
+      ></img>
+    </div>
+  );
+}
 
 const EnterAmountWidget = (props) => {
+  
+  const handleChange = (event) => {
+    props.setCustomAmount(event.target.value);
+    props.setNumTrees(event.target.value);
+  }
+
+  const handleNext = (event) => {
+    switch (props.selected) {
+      case "tree10":
+        props.setNumTrees(10);
+        props.setIsFirstCard(false);
+        break;
+      case "tree20":
+        props.setNumTrees(20);
+        props.setIsFirstCard(false);
+        break;
+      case "tree50":
+        props.setNumTrees(50);
+        props.setIsFirstCard(false);
+        break;
+      case "entry3":
+      //if(Number.isInteger(props.customAmount)){
+
+        props.setIsFirstCard(false);
+      //}
+    }
+  };
+
+
+
   return (
     <div id="widget-style">
       <div
@@ -43,6 +86,7 @@ const EnterAmountWidget = (props) => {
             max-width: 2.25rem;
           `}
         />
+        
       </div>
       <div
         className={css`
@@ -51,33 +95,43 @@ const EnterAmountWidget = (props) => {
           justify-content: space-around;
         `}
       >
-        <div
-          className="tree-amount-button"
-          id="tree10"
-          onClick={(event) => handleClick(props, event)}
-        >
-          1
-          <br />
-          badge
-        </div>
-        <div
-          className="tree-amount-button active"
-          id="tree20"
-          onClick={(event) => handleClick(props, event)}
-        >
-          5
-          <br />
-          badge
-        </div>
-        <div
-          className="tree-amount-button"
-          id="tree50"
-          onClick={(event) => handleClick(props, event)}
-        >
-          10
-          <br />
-          badge
-        </div>
+        <SelectDonationButton
+          selected={props.selected}
+          setSelected={props.setSelected}
+          id={"tree10"}
+          amount={"1"}
+          image={sockblack}
+        />
+        <SelectDonationButton
+          selected={props.selected}
+          setSelected={props.setSelected}
+          id={"tree20"}
+          amount={"5"}
+          image={mealblack}
+        />
+        <SelectDonationButton
+          selected={props.selected}
+          setSelected={props.setSelected}
+          id={"tree50"}
+          amount={"10"}
+          image={bedblack}
+        />
+      </div>
+      <div
+        className={css`
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        `}
+      >
+        <textarea 
+          id="entry3" 
+          className="donation-text" 
+          value={props.customAmount} 
+          placeholder = "custom amount"
+          onClick={(event) => props.setSelected('entry3')}
+          onChange={(event) => handleChange(props, event)}
+        />
       </div>
       <div
         className={css`
@@ -96,6 +150,9 @@ const EnterAmountWidget = (props) => {
 
 const First_Card = (props) => {
   const default_button = "tree20";
+  const numTreesPlaceHolder = "other amount";
+
+  const [customAmount, setCustomAmount] = useState();
 
   const [selectedButton, setSelectedButton] = useState(default_button);
   const [err, setErr] = useState("");
@@ -116,7 +173,7 @@ const First_Card = (props) => {
           className={css`
             border-radius: calc(0.5rem - 1px) calc(0.5rem - 1px) 0 0;
             flex-direction: column;
-            color: #273654;
+            color: #5b92e5;
             background-color: #f6f6f4;
             padding: 1rem 1.25rem 0.8rem;
             border-bottom: 1px solid #eee;
@@ -135,6 +192,8 @@ const First_Card = (props) => {
           setSelected={setSelectedButton}
           setIsFirstCard={props.setIsFirstCard}
           setNumTrees={props.setNumTrees}
+          setCustomAmount={setCustomAmount} 
+          customAmount={customAmount}
         />
         <div
           className={css`
