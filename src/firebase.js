@@ -13,6 +13,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const rootRef = firebase.firestore();
+const rootRef = firebase.database().ref('react');
 
 export default rootRef;

@@ -25,15 +25,19 @@ const handlePrevious = (props) => {
 }
 
 const handleSubmit = (props) => {
-  var date = moment().format("L h:mm:ss A");
-  const donationRef = rootRef.collection('donation');
+  var time = moment()
+  var date = time.format("L h:mm:ss A");
+  const donationRef = rootRef.child('donation');
+  var newChildRef = donationRef.push()
   const new_donation = {
     displayName: props.displayName,
     numTrees: props.numTrees,
     message: props.message,
-    date: date
+    date: date,
+    orderDate: -1*time.valueOf(),
+    orderAmount: -1*props.numTrees
   }
-  donationRef.add(new_donation);
+  newChildRef.set(new_donation);
   props.setIsFirstCard(true);
 }
 

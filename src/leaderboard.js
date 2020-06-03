@@ -13,10 +13,10 @@ const handleClick = (props, event) => {
   props.setSelected(event.target.id);
   switch (event.target.id) {
     case "sortTime":
-      props.setSortby("date");
+      props.setSortby("orderDate");
       break;
     case "sortAmount":
-      props.setSortby("numTrees");
+      props.setSortby("orderAmount");
       break;
   }
 };
@@ -113,19 +113,33 @@ const Leaderboard = (props) => {
                 background-color: #f6f6f4;
                 padding: 1rem 1.25rem 0.8rem;
               `}>
-              {props.donations.map((item) => {
-                console.log(item.name);
+              {props.sortby == "orderDate" ?
+              props.donationsD.map((item) => {
                 return (
                   <Donation
-                    key={item.key}
+                    key = {item.key}
                     avatar={avatar}
-                    name={item.name}
+                    name={item.displayName}
                     numTrees={item.numTrees}
                     message={item.message}
                     date={item.date}
                   />
                 )
-              })}
+              }) : 
+              props.donationsA.map((item) => {
+                return (
+                  <Donation
+                    key = {item.key}
+                    avatar={avatar}
+                    name={item.displayName}
+                    numTrees={item.numTrees}
+                    message={item.message}
+                    date={item.date}
+                  />
+                )
+              })
+              }
+
             </div>
             <div
               className={css`
