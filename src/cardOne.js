@@ -38,7 +38,7 @@ const SelectDonationButton = (props) => {
 
 const EnterAmountWidget = (props) => {
   
-  const handleChange = (event) => {
+  const handleChange = (props, event) => {
     props.setCustomAmount(event.target.value);
     props.setNumTrees(event.target.value);
   }

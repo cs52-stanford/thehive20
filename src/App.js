@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Graphics from "./graphics.js";
 import DonateForm from "./donateform.js";
 import Leaderboard from "./leaderboard.js";
@@ -55,6 +55,7 @@ const App = () => {
     <div className="App">
       <div className="container">
         <Header />
+        <Graphics />
         <DonateForm />
         <Leaderboard donationsA={donationsAmount} donationsD={donationsDate} setSortby={setSortby} sortby={sortby}/>
       </div>
