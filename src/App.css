@@ -20,38 +20,23 @@
 /*
   classes for header.js
 */
-.rows {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 45%;
-} /*
-.row-A {
+.header {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
-  justify-content: center;
   width: 45%;
 }
 
-.row-B {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  width: 45%;
-}
-
-.col-1B {
+.colA {
   margin-top: 5vw;
 }
 
-.col-1 {
+.colB {
   margin-top: 5vw;
 }
 
-.col-2 {
+.colC {
   margin-top: 5vh;
   display: flex;
   flex-direction: column;
@@ -61,10 +46,6 @@
   font-size: calc(10px + 2vmin);
   color: #fff;
 }
-
-.col-3 {
-  margin-top: 5vw;
-} */
 
 .sub-header {
   font-size: 20px;

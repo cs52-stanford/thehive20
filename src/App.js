@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Header from "./header.js";
-import Form from "./form.js";
+import React, { useState } from "react";
+import Graphics from "./graphics.js";
+import DonateForm from "./donateform.js";
 import Leaderboard from "./leaderboard.js";
-import CountdownTimer from "./countdown.jsx";
+import avatar from "./images/icon-badge-grove-2.svg";
+import Header from "./header.jsx";
 
 import { css } from "emotion";
 import moment from "moment";
@@ -54,8 +55,7 @@ const App = () => {
     <div className="App">
       <div className="container">
         <Header />
-        <CountdownTimer />
-        <Form />
+        <DonateForm />
         <Leaderboard donationsA={donationsAmount} donationsD={donationsDate} setSortby={setSortby} sortby={sortby}/>
       </div>
     </div>
