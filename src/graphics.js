@@ -26,7 +26,7 @@ import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 
 // am4core.use;
 
-class Header extends Component {
+class Graphics extends Component {
   componentDidMount() {
     am4core.useTheme(am4themes_animated);
     // Themes end
@@ -181,4 +181,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Graphics;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Header from "./header.js";
-import Form from "./form.js";
+import Graphics from "./graphics.js";
+import DonateForm from "./donateform.js";
 import Leaderboard from "./leaderboard.js";
 import avatar from "./images/icon-badge-grove-2.svg";
 import CountdownTimer from "./countdown.jsx";
@@ -30,9 +30,9 @@ const App = () => {
   return (
     <div className="App">
       <div className="container">
-        <Header />
+        <Graphics />
         <CountdownTimer />
-        <Form addDonation={addDonation} />
+        <DonateForm addDonation={addDonation} />
         <Leaderboard donations={donations} />
       </div>
     </div>
