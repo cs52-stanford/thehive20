@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { css } from "emotion";
 
 function CountdownTimer() {
   const calculateTimeLeft = () => {
@@ -8,12 +9,11 @@ function CountdownTimer() {
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        hrs: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        mins: Math.floor((difference / 1000 / 60) % 60),
+        secs: Math.floor((difference / 1000) % 60),
       };
     }
-
     return timeLeft;
   };
 
@@ -26,23 +26,47 @@ function CountdownTimer() {
   });
 
   const timerComponents = [];
+  const timerLabels = [];
 
   Object.keys(timeLeft).forEach((interval) => {
-    if (!timeLeft[interval]) {
-      return;
-    }
+    // if (!timeLeft[interval]) {
 
-    timerComponents.push(
-      <span>
-        {timeLeft[interval]} {interval}{" "}
-      </span>
-    );
+    //   return;
+    // }
+
+    timerComponents.push(<span>{timeLeft[interval]} </span>);
+    timerLabels.push(<span>{interval} </span>);
   });
 
   return (
     <div>
-      <h1>Donation Countdown</h1>
-      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      {/* <h1>Donations</h1> */}
+      <div
+        className={css`
+          display: flex;
+          flex-direction: column;
+          // align-items: flex-start;
+        `}
+      >
+        <div
+          className={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+          `}
+        >
+          {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+        </div>
+        <div
+          className={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+          `}
+        >
+          {timerLabels}
+        </div>
+      </div>
     </div>
   );
 }

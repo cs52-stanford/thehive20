@@ -10,10 +10,6 @@ import { css } from "emotion";
 
 //Here is all the image files that you need
 import unLogo from "./images/unhcrLogo.svg";
-import title_img from "./images/SaveRef1.png";
-import astronaut from "./images/astronaut-sign.svg";
-import spaceship from "./images/spaceship.svg";
-import underline from "./images/counter-underline-light.svg";
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -172,9 +168,6 @@ class Graphics extends Component {
   render() {
     return (
       <div>
-        <a href="https://www.unrefugees.org" class="logo">
-          <img src={unLogo} alt="UN_LOGO" height="50vh" width="100%" />
-        </a>
         <div id="chartdiv" style={{ width: "160vh", height: "100vh" }}></div>
       </div>
     );
