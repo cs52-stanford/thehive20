@@ -46,15 +46,15 @@ const EnterAmountWidget = (props) => {
   const handleNext = (event) => {
     switch (props.selected) {
       case "tree10":
-        props.setNumTrees(10);
+        props.setNumTrees(1);
         props.setIsFirstCard(false);
         break;
       case "tree20":
-        props.setNumTrees(20);
+        props.setNumTrees(5);
         props.setIsFirstCard(false);
         break;
       case "tree50":
-        props.setNumTrees(50);
+        props.setNumTrees(10);
         props.setIsFirstCard(false);
         break;
       case "entry3":

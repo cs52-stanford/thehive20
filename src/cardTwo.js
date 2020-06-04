@@ -46,7 +46,7 @@ const handleSubmit = (props) => {
   const new_donation = {
     displayName: getDonationName(props.displayName),
     numTrees: props.numTrees,
-    message: props.message,
+    message: getMessage(props.message),
     date: date,
     orderDate: -1*time.valueOf(),
     orderAmount: -1*props.numTrees
