@@ -95,7 +95,7 @@
   margin-bottom: 15vw;
   border-radius: 5vh;
   padding: 2vh;
-  background-color: #273654;
+  background-color: #5b92e5;
   font-size: 20px;
 }
 
@@ -201,6 +201,6 @@
 
 /*When you are implementing Card One/First Card, this is how you highlight a button*/
 .active {
-  background-color: #273654 !important;
+  background-color: #5b92e5 !important;
   color: #fff !important;
 }

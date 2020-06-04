@@ -5,7 +5,13 @@ import { css } from "emotion";
 import moment from "moment";
 
 import Donation from "./donation.js";
-import avatar from "./images/icon-badge-grove-2.svg";
+//import avatar from "./images/icon-badge-grove-2.svg";
+import sock from "./images/sock.svg"
+import meal from "./images/meal.svg"
+import lamp from "./images/lamp.svg"
+import bed from "./images/bed.svg"
+import avatar from "./images/house.svg"
+
 
 const handleClick = (props, event) => {
   document.getElementById(props.selected).classList.remove("active");
@@ -51,7 +57,7 @@ const SortByWidget = (props) => {
         id="sortAmount"
         onClick={(event) => handleClick(props, event)}
       >
-        Most Trees
+        Most 
       </div>
     </div>
   );

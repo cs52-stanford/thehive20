@@ -24,13 +24,27 @@ const handlePrevious = (props) => {
   props.setIsFirstCard(true);
 }
 
+function getDonationName (p1) {
+  if (p1 == undefined){
+    return "Anonymous"
+  }
+  return p1
+}
+
+function getMessage (p1) {
+  if (p1 == undefined){
+    return "No Message"
+  }
+  return p1
+}
+
 const handleSubmit = (props) => {
   var time = moment()
   var date = time.format("L h:mm:ss A");
   const donationRef = rootRef.child('donation');
   var newChildRef = donationRef.push()
   const new_donation = {
-    displayName: props.displayName,
+    displayName: getDonationName(props.displayName),
     numTrees: props.numTrees,
     message: props.message,
     date: date,
@@ -43,9 +57,26 @@ const handleSubmit = (props) => {
 
 const DonationDetails = (props) =>  {
   return <div id="donation-style">
-    <textarea id="entry1" className="donation-text" value={props.displayName} onChange={(event) => handleChange(props, event)}/>
-    <textarea id="entry2" className="donation-text" value={props.email} onChange={(event) => handleChange(props, event)}/>
-    <textarea id="entry3" className="donation-text" value={props.message} onChange={(event) => handleChange(props, event)}/>
+    <textarea 
+    id="entry1" 
+    className="donation-text" 
+    value={props.displayName} 
+    placeholder="Display name" 
+    onChange={(event) => handleChange(props, event)}/>
+    
+    <textarea 
+    id="entry2" 
+    className="donation-text" 
+    value={props.email} 
+    placeholder="Email" 
+    onChange={(event) => handleChange(props, event)}/>
+    
+    
+    <textarea id="entry3"
+    className="donation-text" 
+    value={props.message} 
+    placeholder="My #saverefugees message is..." 
+    onChange={(event) => handleChange(props, event)}/>
     <div className={css`display: flex; flex-direction: row; justify-content: flex-end; width:100%`}>
       <div className="next-button previous-color" onClick={() => handlePrevious(props)}>Previous</div>
       <div className="next-button" onClick={() => handleSubmit(props)}>Submit</div>
@@ -57,11 +88,12 @@ const DonationDetails = (props) =>  {
 const Second_Card = (props) => {
   const displayNamePlaceHolder = "Display Name";
   const emailPlaceHolder = "Email";
-  const messagePlaceHolder = "My #TeamTrees message is..";
+  const messagePlaceHolder = "My #Universities4Refugees message is..";
 
-  const [displayName, setDisplayName] = useState(displayNamePlaceHolder);
-  const [email, setEmail] = useState(emailPlaceHolder);
-  const [message, setMessage] = useState(messagePlaceHolder);
+  //const [displayName, setDisplayName] = useState(displayNamePlaceHolder);
+  const [displayName, setDisplayName] = useState();
+  const [email, setEmail] = useState();
+  const [message, setMessage] = useState();
   
   return <div 
     className={css`
@@ -78,7 +110,7 @@ const Second_Card = (props) => {
           className={css`
             border-radius: calc(.5rem - 1px) calc(.5rem - 1px) 0 0;
             flex-direction: column;
-            color: #273654;
+            color: #5b92e5;
             background-color: #f6f6f4;
             padding: 1rem 1.25rem .8rem;
             border-bottom: 1px solid #eee;
