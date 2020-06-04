@@ -12,35 +12,43 @@ import rootRef from "./firebase.js";
 //the Donation component has been implemented for you.
 import Donation from "./donation.js";
 
-const useFirestoreQuery = (ref, sortby) => {
-  const [donations, setDonations] = useState([]);
-
-  useEffect(() => {
-    const donationRef = ref.collection('donation').orderBy(sortby, "desc");
-    return donationRef.onSnapshot(function(querySnapshot) {
-      let newState = [];
-      querySnapshot.forEach(function(doc) {
-        newState.push({
-          key: doc.id,
-          name: doc.data().displayName,
-          numTrees: doc.data().numTrees,
-          message: doc.data().message,
-          date: doc.data().date
-        });
-      })
-      setDonations(newState);
-    })
-  });
-
-  return donations;
-
-}
-
 const App = () => {
 
-  const [sortby, setSortby] = useState("date");
+  const donationsLimit = 100;
 
-  const donations = useFirestoreQuery(rootRef, sortby);
+  const [sortby, setSortby] = useState("orderDate");
+
+  const [donationsDate, setDonationsDate] = useState([]);
+  const [donationsAmount, setDonationsAmount] = useState([]);
+
+  useEffect(() => {
+    var donationsRef = rootRef.child('donation')
+      .orderByChild("orderDate")
+      .limitToFirst(donationsLimit);
+
+    return donationsRef.on('value', function(dataSnapshot) {
+      var donates = [];
+      dataSnapshot.forEach(function(childSnapshot) {
+        donates.push(childSnapshot.val());
+      })
+      setDonationsDate(donates);
+    })
+  }, []);
+
+  useEffect(() => {
+    var donationsRef = rootRef.child('donation')
+      .orderByChild("orderAmount")
+      .limitToFirst(donationsLimit);
+
+    return donationsRef.on('value', function(dataSnapshot) {
+      var donates = [];
+      dataSnapshot.forEach(function(childSnapshot) {
+        donates.push(childSnapshot.val());
+      })
+      setDonationsAmount(donates);
+    })
+  }, []);
+
 
   return (
     <div className="App">
@@ -48,7 +56,7 @@ const App = () => {
         <Header />
         <CountdownTimer />
         <Form />
-        <Leaderboard donations={donations} setSortby={setSortby}/>
+        <Leaderboard donationsA={donationsAmount} donationsD={donationsDate} setSortby={setSortby} sortby={sortby}/>
       </div>
     </div>
   );
