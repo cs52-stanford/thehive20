@@ -55,6 +55,8 @@ const handleSubmit = (props) => {
   props.setIsFirstCard(true);
 }
 
+
+
 const DonationDetails = (props) =>  {
   return <div id="donation-style">
     <textarea 
@@ -77,6 +79,18 @@ const DonationDetails = (props) =>  {
     value={props.message} 
     placeholder="My #saverefugees message is..." 
     onChange={(event) => handleChange(props, event)}/>
+
+
+
+  <div class="dropdown">
+    <button class="dropbtn">Select College</button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+
     <div className={css`display: flex; flex-direction: row; justify-content: flex-end; width:100%`}>
       <div className="next-button previous-color" onClick={() => handlePrevious(props)}>Previous</div>
       <div className="next-button" onClick={() => handleSubmit(props)}>Submit</div>

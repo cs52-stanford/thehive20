@@ -10,8 +10,10 @@ import sock from "./images/sock.svg"
 import meal from "./images/meal.svg"
 import lamp from "./images/lamp.svg"
 import bed from "./images/bed.svg"
-import avatar from "./images/house.svg"
+import house from "./images/house.svg"
+import { time } from "@amcharts/amcharts4/core";
 
+var emily = house;
 
 const handleClick = (props, event) => {
   document.getElementById(props.selected).classList.remove("active");
@@ -121,10 +123,23 @@ const Leaderboard = (props) => {
               `}>
               {props.sortby == "orderDate" ?
               props.donationsD.map((item) => {
+                item.avatar = house;
+                if (item.numTrees < 5){
+                  item.avatar = sock;
+                }
+                else if (item.numTrees < 10){
+                  item.avatar = meal;
+                }
+                else if (item.numTrees < 50){
+                  item.avatar = bed;
+                }
+                else if (item.numTrees < 60){
+                  item.avatar = lamp;
+                }
                 return (
                   <Donation
                     key = {item.key}
-                    avatar={avatar}
+                    avatar={item.avatar}
                     name={item.displayName}
                     numTrees={item.numTrees}
                     message={item.message}
@@ -136,7 +151,7 @@ const Leaderboard = (props) => {
                 return (
                   <Donation
                     key = {item.key}
-                    avatar={avatar}
+                    avatar={house}
                     name={item.displayName}
                     numTrees={item.numTrees}
                     message={item.message}
