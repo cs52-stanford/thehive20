@@ -17,6 +17,9 @@ const handleChange = (props, event) => {
     case "entry3":
       props.setMessage(event.target.value);
       break;
+    case "entry4":
+      props.setCollege(event.target.value);
+      break;
   }
 }
 
@@ -47,6 +50,7 @@ const handleSubmit = (props) => {
     displayName: getDonationName(props.displayName),
     numTrees: props.numTrees,
     message: getMessage(props.message),
+    college: props.college,
     date: date,
     orderDate: -1*time.valueOf(),
     orderAmount: -1*props.numTrees
@@ -82,13 +86,14 @@ const DonationDetails = (props) =>  {
 
 
 
-    <input className={css`display: flex; flex-direction: row; justify-content: flex-end;
+    <input id="entry4"
+    className={css`display: flex; flex-direction: row; justify-content: flex-end;
     border-radius: 0.25rem; box-shadow: none;
     border-style: solid;
     border-color: #CFCFCF; border-width: 0.1px;
     font-family: "courier"; font-size: 1rem;
     font-weight: 300; height: 40px; width:93.5%`} 
-      type="text" name="product" placeholder = " Select College" list="productName"/>
+      type="text" name="product" placeholder = " Select College" list="productName"  onChange={(event) => handleChange(props, event)}/>
       <datalist id="productName">
       <option value="A T STILL UNIVERSITY OF HEALTH SCIENCES">	A T STILL UNIVERSITY OF HEALTH SCIENCES	</option>
       <option value="AANIIIH NAKODA COLLEGE">	AANIIIH NAKODA COLLEGE	</option>
@@ -7196,6 +7201,7 @@ const Second_Card = (props) => {
   const [displayName, setDisplayName] = useState();
   const [email, setEmail] = useState();
   const [message, setMessage] = useState();
+  const [college, setCollege] = useState();
   
   return <div 
     className={css`
@@ -7225,7 +7231,7 @@ const Second_Card = (props) => {
         >Details</div>
         {/* Hint: You'll be adding props to DonationDetails as you go!*/}
         <DonationDetails displayName={displayName} setDisplayName={setDisplayName} email={email}
-        setEmail={setEmail} message={message} setMessage={setMessage} setIsFirstCard={props.setIsFirstCard}
+        setEmail={setEmail} message={message} setMessage={setMessage} college={college} setCollege={setCollege} setIsFirstCard={props.setIsFirstCard}
         numTrees={props.numTrees}/>
         <div
           className={css`
