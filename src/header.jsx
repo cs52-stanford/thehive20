@@ -11,12 +11,13 @@ import { css } from "emotion";
 
 //Here is all the image files that you need
 import unLogo from "./images/unhcrLogo.svg";
+import univlogoheader from "./images/univlogoheader.svg";
 
 class Header extends Component {
   render() {
     return (
       <div className="header">
-        <div className="colA">LOGO</div>
+        <div className="colA"><img src={univlogoheader} alt="PROJECT_LOGO" height="10vh" width="25%" /></div>
         <div className="colB">
           <CountdownTimer />
         </div>

@@ -16,28 +16,28 @@ const SelectDonationButton = (props) => {
   };
 
 
-  return(
+  return (
     <div
-      className= {
-        "tree-amount-button" + 
-        (props.selected === props.id ? ' active' : '' )
+      className={
+        "tree-amount-button" +
+        (props.selected === props.id ? ' active' : '')
       }
       id={props.id}
       onClick={(event) => handleClick(event)}
     >
-     <div> {props.amount} </div>
+      <div> {props.amount} </div>
       <img
-      src={props.image}
-      className={
-        css`max-width: 4.25rem;`
-      }
+        src={props.image}
+        className={
+          css`max-width: 4.25rem;`
+        }
       ></img>
     </div>
   );
 }
 
 const EnterAmountWidget = (props) => {
-  
+
   const handleChange = (props, event) => {
     props.setCustomAmount(event.target.value);
     props.setNumTrees(event.target.value);
@@ -58,7 +58,7 @@ const EnterAmountWidget = (props) => {
         props.setIsFirstCard(false);
         break;
       case "entry3":
-      //if(Number.isInteger(props.customAmount)){
+        //if(Number.isInteger(props.customAmount)){
 
         props.setIsFirstCard(false);
       //}
@@ -86,7 +86,7 @@ const EnterAmountWidget = (props) => {
             max-width: 2.25rem;
           `}
         />
-        
+
       </div>
       <div
         className={css`
@@ -124,11 +124,11 @@ const EnterAmountWidget = (props) => {
           justify-content: space-around;
         `}
       >
-        <textarea 
-          id="entry3" 
-          className="donation-text" 
-          value={props.customAmount} 
-          placeholder = "custom amount"
+        <textarea
+          id="entry3"
+          className="donation-text"
+          value={props.customAmount}
+          placeholder="custom amount"
           onClick={(event) => props.setSelected('entry3')}
           onChange={(event) => handleChange(props, event)}
         />
@@ -184,7 +184,7 @@ const First_Card = (props) => {
             font-weight: 600;
           `}
         >
-          DONATE FOR YOUR SCHOOL, COMPETE, SPREAD THE WORD!
+          DONATE FOR YOUR UNIVERSITY, COMPETE, SPREAD THE WORD!
         </div>
         {/* Hint: You'll be adding props to EnterAmountWidget as you go!*/}
         <EnterAmountWidget
@@ -192,7 +192,7 @@ const First_Card = (props) => {
           setSelected={setSelectedButton}
           setIsFirstCard={props.setIsFirstCard}
           setNumTrees={props.setNumTrees}
-          setCustomAmount={setCustomAmount} 
+          setCustomAmount={setCustomAmount}
           customAmount={customAmount}
         />
         <div
