@@ -109,7 +109,10 @@ const handleSubmit = (props) => {
     newChildRef.set(new_donation);
 
     if (props.college != "Choose not to specify") {
-      // Do something
+      var query = rootRef.child("college").orderByChild("NAME").equalTo(props.college);
+      query.once("child_added", function(snapshot) {
+        snapshot.ref.update({ AMOUNT: snapshot.val().AMOUNT - props.numTrees })
+      });
     }
     props.setIsFirstCard(true);
   }
