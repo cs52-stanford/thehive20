@@ -11,17 +11,38 @@ import { css } from "emotion";
 
 //Here is all the image files that you need
 import unLogo from "./images/unhcrLogo.svg";
-import univlogoheader from "./images/univlogoheader.svg";
+import univlogo from "./images/univlogoheader2.0.svg";
 
 class Header extends Component {
   render() {
     return (
-      <div className="header">
-        <div className="colA"><img src={univlogoheader} alt="PROJECT_LOGO" height="10vh" width="25%" /></div>
-        <div className="colB">
-          <CountdownTimer />
+      <div
+        className={css`
+          display: flex;
+          flex-direction: row;
+          align-items: flex-end;
+          margin: 0 0 0 1rem;
+        `}
+      >
+        <div
+          className={css`
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+          `}
+        >
+          <img src={univlogo} alt="PROJECT_LOGO" height="450vh" width="400vh" />
         </div>
-        <div className="colC">
+        <div
+          className={css`
+            display: flex;
+            flex-direction: column;
+            flex-grow: 2;
+          `}
+        >
+          <div className="colB">
+            <CountdownTimer />
+          </div>
           <p3>
             The ultimate college donation
             <br></br>
