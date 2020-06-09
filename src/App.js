@@ -15,7 +15,6 @@ import Donation from "./donation.js";
 import { copyAllProperties } from "@amcharts/amcharts4/.internal/core/utils/Object";
 
 const App = () => {
-
   const donationsLimit = 100;
   const collegesLimit = 10;
 
@@ -26,31 +25,33 @@ const App = () => {
   const [mapData, setMapData] = useState([]);
 
   useEffect(() => {
-    var donationsRef = rootRef.child('donation')
+    var donationsRef = rootRef
+      .child("donation")
       .orderByChild("orderDate")
       .limitToFirst(donationsLimit);
 
-    return donationsRef.on('value', function(dataSnapshot) {
+    return donationsRef.on("value", function (dataSnapshot) {
       var donates = [];
-      dataSnapshot.forEach(function(childSnapshot) {
+      dataSnapshot.forEach(function (childSnapshot) {
         donates.push(childSnapshot.val());
-      })
+      });
       setDonationsDate(donates);
-    })
+    });
   }, []);
 
   useEffect(() => {
-    var donationsRef = rootRef.child('donation')
+    var donationsRef = rootRef
+      .child("donation")
       .orderByChild("orderAmount")
       .limitToFirst(donationsLimit);
 
-    return donationsRef.on('value', function(dataSnapshot) {
+    return donationsRef.on("value", function (dataSnapshot) {
       var donates = [];
-      dataSnapshot.forEach(function(childSnapshot) {
+      dataSnapshot.forEach(function (childSnapshot) {
         donates.push(childSnapshot.val());
-      })
+      });
       setDonationsAmount(donates);
-    })
+    });
   }, []);
 
   
@@ -82,7 +83,12 @@ const App = () => {
         <Header />
         <Graphics mapData={mapData}/>
         <DonateForm />
-        <Leaderboard donationsA={donationsAmount} donationsD={donationsDate} setSortby={setSortby} sortby={sortby}/>
+        <Leaderboard
+          donationsA={donationsAmount}
+          donationsD={donationsDate}
+          setSortby={setSortby}
+          sortby={sortby}
+        />
       </div>
     </div>
   );
