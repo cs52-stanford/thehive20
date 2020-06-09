@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Graphics from "./graphics.js";
-import DonateForm from "./donateform.js";
+import DonateForm from "./DonateForm.js";
 import Leaderboard from "./leaderboard.js";
 import avatar from "./images/icon-badge-grove-2.svg";
 import Header from "./header.jsx";
