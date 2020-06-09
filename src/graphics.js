@@ -17,7 +17,7 @@ import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
 
 function displayMap (props) {
   //theme
-  am4core.useTheme(am4themes_animated);
+  //am4core.useTheme(am4themes_animated);
 
   // Create map instance
   let chart = am4core.create("chartdiv", am4maps.MapChart);

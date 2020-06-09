@@ -148,10 +148,23 @@ const Leaderboard = (props) => {
                 )
               }) : 
               props.donationsA.map((item) => {
+                item.avatar = house;
+                if (item.numTrees < 5){
+                  item.avatar = sock;
+                }
+                else if (item.numTrees < 10){
+                  item.avatar = meal;
+                }
+                else if (item.numTrees < 50){
+                  item.avatar = bed;
+                }
+                else if (item.numTrees < 60){
+                  item.avatar = lamp;
+                }
                 return (
                   <Donation
                     key = {item.key}
-                    avatar={house}
+                    avatar={item.avatar}
                     name={item.displayName}
                     numTrees={item.numTrees}
                     message={item.message}
