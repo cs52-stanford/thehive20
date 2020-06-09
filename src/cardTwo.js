@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { css } from "emotion";
-import * as Papa from 'papaparse';
-import * as File from 'File';
 
 
 import rootRef from "./firebase.js";
@@ -98,18 +96,21 @@ const handleSubmit = (props) => {
   var isValid = optionVals.indexOf(props.college) >= 0;
   if(!isValid){
     document.getElementById("Valid College").innerHTML = "Please enter a valid college!";
-  }
-  const new_donation = {
-    displayName: getDonationName(props.displayName),
-    numTrees: props.numTrees,
-    message: getMessage(props.message),
-    college: props.college,
-    date: date,
-    orderDate: -1*time.valueOf(),
-    orderAmount: -1*props.numTrees
-  }
-  newChildRef.set(new_donation);
-  if(isValid){
+  } else {
+    const new_donation = {
+      displayName: getDonationName(props.displayName),
+      numTrees: props.numTrees,
+      message: getMessage(props.message),
+      college: props.college,
+      date: date,
+      orderDate: -1*time.valueOf(),
+      orderAmount: -1*props.numTrees
+    }
+    newChildRef.set(new_donation);
+
+    if (props.college != "Choose not to specify") {
+      // Do something
+    }
     props.setIsFirstCard(true);
   }
 }
@@ -163,7 +164,7 @@ const DonationDetails = (props) =>  {
     font-weight: 300; height: 40px; width:93.5%`} 
       type="text" name="product" 
       onChange={(event) => handleChange(props, event)}
-      placeholder = " Choose not to specify" list="productName"/>
+      placeholder = "Choose not to specify" list="productName"/>
       <datalist id="productName">
       <option value="Choose not to specify">Choose not to specify</option>
       </datalist>
