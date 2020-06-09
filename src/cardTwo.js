@@ -25,7 +25,7 @@ const handleChange = (props, event) => {
       props.setMessage(event.target.value);
       break;
     case "entry4":
-      props.setSchool(event.target.value);
+      props.setCollege(event.target.value);
       break;
   }
 }
@@ -90,6 +90,7 @@ const handleSubmit = (props) => {
     displayName: getDonationName(props.displayName),
     numTrees: props.numTrees,
     message: getMessage(props.message),
+    college: props.college,
     date: date,
     orderDate: -1*time.valueOf(),
     orderAmount: -1*props.numTrees
@@ -129,7 +130,9 @@ const DonationDetails = (props) =>  {
     onChange={(event) => handleChange(props, event)}/>
 
 
-    <input id ="entry4" className={css`display: flex; flex-direction: row; justify-content: flex-end;
+
+    <input id="entry4"
+    className={css`display: flex; flex-direction: row; justify-content: flex-end;
     border-radius: 0.25rem; box-shadow: none;
     border-style: solid;
     border-color: #CFCFCF; border-width: 0.1px;
@@ -159,8 +162,7 @@ const Second_Card = (props) => {
   const [displayName, setDisplayName] = useState();
   const [email, setEmail] = useState();
   const [message, setMessage] = useState();
-  const [map, setMap] = useState();
-  const [school, setSchool] = useState("Choose not to specify");
+  const [college, setCollege] = useState();
   
   return <div 
     className={css`
@@ -190,8 +192,10 @@ const Second_Card = (props) => {
         >Details</div>
         {/* Hint: You'll be adding props to DonationDetails as you go!*/}
         <DonationDetails displayName={displayName} setDisplayName={setDisplayName} email={email}
-        setEmail={setEmail} message={message} setMessage={setMessage} setIsFirstCard={props.setIsFirstCard}
-        numTrees={props.numTrees} map = {map} setMap={setMap} school = {school} setSchool = {setSchool}/>
+
+        setEmail={setEmail} message={message} setMessage={setMessage} college={college} 
+        setCollege={setCollege} setIsFirstCard={props.setIsFirstCard}
+        numTrees={props.numTrees}/>
         <div
           className={css`
             border-radius: 0 0 calc(.5rem - 1px) calc(.5rem - 1px);

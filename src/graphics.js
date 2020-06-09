@@ -24,8 +24,8 @@ import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 
 class Graphics extends Component {
   componentDidMount() {
+    //theme
     am4core.useTheme(am4themes_animated);
-    // Themes end
 
     // Create map instance
     let chart = am4core.create("chartdiv", am4maps.MapChart);
@@ -33,76 +33,6 @@ class Graphics extends Component {
     let title = chart.titles.create();
     title.text = "[bold font-size: 20]Universities with Most Donations[/]";
     title.textAlign = "middle";
-
-    let mapData = [
-      {
-        id: "CA",
-        name: "Stanford",
-        value: 32358260,
-        color: chart.colors.getIndex(0),
-      },
-      {
-        id: "NY",
-        name: "New York University",
-        value: 3215988,
-        color: chart.colors.getIndex(1),
-      },
-      // {
-      //   id: "DZ",
-      //   name: "Algeria",
-      //   value: 35980193,
-      //   color: chart.colors.getIndex(2),
-      // },
-      {
-        id: "NY",
-        name: "NYU",
-        value: 3215988,
-        color: chart.colors.getIndex(1),
-      },
-      {
-        id: "AZ",
-        name: "Arizona State University",
-        value: 35980193,
-        color: chart.colors.getIndex(2),
-      },
-      {
-        id: "NV",
-        name: "University of Nevada",
-        value: 19618432,
-        color: chart.colors.getIndex(2),
-      },
-      {
-        id: "AR",
-        name: "University of Arkansas",
-        value: 40764561,
-        color: chart.colors.getIndex(3),
-      },
-      {
-        id: "FL",
-        name: "Florida",
-        value: 3100236,
-        color: chart.colors.getIndex(1),
-      },
-      { id: "TX", name: "Texas", value: 22605732, color: "#8aabb0" },
-      {
-        id: "VT",
-        name: "Vermont",
-        value: 8413429,
-        color: chart.colors.getIndex(1),
-      },
-      {
-        id: "OR",
-        name: "Oregon",
-        value: 9306023,
-        color: chart.colors.getIndex(1),
-      },
-      {
-        id: "WA",
-        name: "Washington",
-        value: 1323535,
-        color: chart.colors.getIndex(0),
-      },
-    ];
 
     // Set map definition
     chart.geodata = am4geodata_usaHigh;
@@ -112,50 +42,112 @@ class Graphics extends Component {
 
     // Create map polygon series
     let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
-    // polygonSeries.exclude = ["AQ"];
     polygonSeries.useGeodata = true;
-    polygonSeries.nonScalingStroke = true;
-    polygonSeries.strokeWidth = 0.5;
-    polygonSeries.calculateVisualCenter = true;
 
+    // polygonSeries.nonScalingStroke = true;
+    // polygonSeries.strokeWidth = 0.5;
+    // polygonSeries.calculateVisualCenter = true;
+    // Configure series
+    let polygonTemplate = polygonSeries.mapPolygons.template;
+    polygonTemplate.tooltipText = "{name}";
+    polygonTemplate.fill = am4core.color("#FF3600").lighten(0.2);
+
+    let colorSet = new am4core.ColorSet();
+    let mapData = [
+      // {
+      //   label: "Stanford University",
+      //   latitude: 40.4167,
+      //   longitude: -3.7033,
+      //   value: 32358260,
+      //   color: colorSet.next(),
+      // },
+      // {
+      //   label: "University of Texas Austin",
+      //   latitude: 64.1353,
+      //   longitude: -21.8952,
+      //   value: 22605732,
+      //   color: colorSet.next(),
+      // },
+      {
+        label: "UNIVERSITY OF CALIFORNIA-SANTA CRUZ",
+        latitude: 36.9990184170001,
+        longitude: -122.060726126,
+        value: 8413429,
+        color: colorSet.next(),
+      },
+      {
+        label: "UNIVERSITY OF OREGON",
+        latitude: 44.044515,
+        longitude: -123.07398,
+        value: 9306023,
+        color: colorSet.next(),
+      },
+      {
+        label: "UNIVERSITY OF WASHINGTON-SEATTLE CAMPUS",
+        latitude: 47.655775179,
+        longitude: -122.310802164,
+        value: 9323535,
+        color: colorSet.next(),
+      },
+    ];
     let imageSeries = chart.series.push(new am4maps.MapImageSeries());
+    imageSeries.mapImages.template.propertyFields.longitude = "longitude";
+    imageSeries.mapImages.template.propertyFields.latitude = "latitude";
+    imageSeries.mapImages.template.propertyFields.value = "value";
+    imageSeries.mapImages.template.tooltipText = "{label}: [bold]${value}";
+
+    // let imageSeries = chart.series.push(new am4maps.MapImageSeries());
     imageSeries.data = mapData;
-    imageSeries.dataFields.value = "value";
 
-    let imageTemplate = imageSeries.mapImages.template;
-    imageTemplate.nonScaling = true;
+    // imageSeries.data = mapData;
+    // imageSeries.dataFields.value = "value";
+    // let imageTemplate = imageSeries.mapImages.template;
+    // imageTemplate.propertyFields.value = "value";
+    // imageTemplate.propertyFields.longitude = "longitude";
+    // imageTemplate.propertyFields.latitude = "latitude";
+    // imageTemplate.tooltipText = "{title}: [bold]{value}[/]";
+    // imageTemplate.nonScaling = true;
 
-    let circle = imageTemplate.createChild(am4core.Circle);
-    circle.fillOpacity = 0.7;
+    let circle = imageSeries.mapImages.template.createChild(am4core.Circle);
     circle.propertyFields.fill = "color";
-    circle.tooltipText = "{name}: [bold]${value}[/]";
+
+    let circle2 = imageSeries.mapImages.template.createChild(am4core.Circle);
+    // circle2.radius = 7;
+    circle2.propertyFields.fill = "color";
+
+    imageSeries.heatRules.push({
+      target: circle2,
+      property: "radius",
+      min: 8,
+      max: 31,
+      propertyField: "value",
+    });
 
     imageSeries.heatRules.push({
       target: circle,
       property: "radius",
-      min: 4,
+      min: 7,
       max: 30,
-      dataField: "value",
-    });
-    imageTemplate.adapter.add("latitude", function (latitude, target) {
-      let polygon = polygonSeries.getPolygonById(
-        "US-" + target.dataItem.dataContext.id
-      );
-      if (polygon) {
-        return polygon.visualLatitude;
-      }
-      return latitude;
+      propertyField: "value",
     });
 
-    imageTemplate.adapter.add("longitude", function (longitude, target) {
-      let polygon = polygonSeries.getPolygonById(
-        "US-" + target.dataItem.dataContext.id
-      );
-      if (polygon) {
-        return polygon.visualLongitude;
-      }
-      return longitude;
+    circle2.events.on("inited", function (event) {
+      animateBullet(event.target);
     });
+
+    function animateBullet(circle) {
+      let animation = circle.animate(
+        [
+          { property: "scale", from: 1, to: 3 },
+          { property: "opacity", from: 1, to: 0 },
+        ],
+        1000,
+        am4core.ease.circleOut
+      );
+      animation.events.on("animationended", function (event) {
+        animateBullet(event.target.object);
+      });
+    }
 
     this.chart = chart;
   }
