@@ -52,7 +52,6 @@ function getMessage (p1) {
 function getMapFromCSV(){
   
   return csv(colleges, function(err, data) {
-    var bigArray1 = [0, 0, 0, 0];
     if (err) {  
       console.log(err);
     } else{
@@ -85,7 +84,21 @@ const handleSubmit = (props) => {
   var time = moment()
   var date = time.format("L h:mm:ss A");
   const donationRef = rootRef.child('donation');
-  var newChildRef = donationRef.push()
+  var newChildRef = donationRef.push();
+
+  var options = document.getElementById('productName').getElementsByTagName('option');
+  var optionVals = new Array(options.length).fill(0);
+  for (var i=0; i < options.length; i += 1) {
+    optionVals[i] = options[i].value;
+  }
+
+  console.log("optionVals", optionVals);
+  console.log("props.college", props.college);
+
+  var isValid = optionVals.indexOf(props.college) >= 0;
+  if(!isValid){
+    document.getElementById("Valid College").innerHTML = "Please enter a valid college!";
+  }
   const new_donation = {
     displayName: getDonationName(props.displayName),
     numTrees: props.numTrees,
@@ -96,7 +109,9 @@ const handleSubmit = (props) => {
     orderAmount: -1*props.numTrees
   }
   newChildRef.set(new_donation);
-  props.setIsFirstCard(true);
+  if(isValid){
+    props.setIsFirstCard(true);
+  }
 }
 
 
@@ -129,7 +144,15 @@ const DonationDetails = (props) =>  {
     placeholder="My #saverefugees message is..." 
     onChange={(event) => handleChange(props, event)}/>
 
-
+    <div className={css` 
+     font-size: 1rem;
+     font-weight: 300;
+     text-align: center!important;
+     color: #8A8989;
+     font-family: "courier";
+ `}
+        
+    >Select College</div>
 
     <input id="entry4"
     className={css`display: flex; flex-direction: row; justify-content: flex-end;
@@ -140,10 +163,11 @@ const DonationDetails = (props) =>  {
     font-weight: 300; height: 40px; width:93.5%`} 
       type="text" name="product" 
       onChange={(event) => handleChange(props, event)}
-      placeholder = " Select College" list="productName"/>
+      placeholder = " Choose not to specify" list="productName"/>
       <datalist id="productName">
       <option value="Choose not to specify">Choose not to specify</option>
       </datalist>
+      <p id="Valid College"></p>
 
     <div className={css`display: flex; flex-direction: row; justify-content: flex-end; width:100%`}>
       <div className="next-button previous-color" onClick={() => handlePrevious(props)}>Previous</div>
@@ -162,7 +186,7 @@ const Second_Card = (props) => {
   const [displayName, setDisplayName] = useState();
   const [email, setEmail] = useState();
   const [message, setMessage] = useState();
-  const [college, setCollege] = useState();
+  const [college, setCollege] = useState("Choose not to specify");
   
   return <div 
     className={css`
