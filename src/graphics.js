@@ -9,18 +9,11 @@ import React, { Component } from "react";
 import { css } from "emotion";
 
 //Here is all the image files that you need
-import unLogo from "./images/unhcrLogo.svg";
 
 import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4maps from "@amcharts/amcharts4/maps";
 
-import am4themes_material from "@amcharts/amcharts4/themes/material";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
-import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
-
-// am4core.use;
 
 function displayMap (props) {
   //theme
@@ -120,6 +113,7 @@ function displayMap (props) {
 
   return chart;
 }
+
 
 class Graphics extends Component {
   componentDidMount() {

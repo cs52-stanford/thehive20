@@ -9,6 +9,7 @@ import { css } from "emotion";
 import moment from "moment";
 import "./App.css";
 import rootRef from "./firebase.js";
+import * as am4core from "@amcharts/amcharts4/core";
 
 //the Donation component has been implemented for you.
 import Donation from "./donation.js";
@@ -54,8 +55,6 @@ const App = () => {
     });
   }, []);
 
-  
-
   useEffect(() => {
     var collegesRef = rootRef.child('college')
       .orderByChild("AMOUNT")
@@ -75,7 +74,6 @@ const App = () => {
     })
   }, []);
   
-
 
   return (
     <div className="App">
