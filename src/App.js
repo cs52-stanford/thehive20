@@ -13,14 +13,17 @@ import * as am4core from "@amcharts/amcharts4/core";
 
 //the Donation component has been implemented for you.
 import Donation from "./donation.js";
+import { copyAllProperties } from "@amcharts/amcharts4/.internal/core/utils/Object";
 
 const App = () => {
   const donationsLimit = 100;
+  const collegesLimit = 10;
 
   const [sortby, setSortby] = useState("orderDate");
 
   const [donationsDate, setDonationsDate] = useState([]);
   const [donationsAmount, setDonationsAmount] = useState([]);
+  const [mapData, setMapData] = useState([]);
 
   useEffect(() => {
     var donationsRef = rootRef
@@ -51,26 +54,26 @@ const App = () => {
       setDonationsAmount(donates);
     });
   }, []);
-  let mapData = [
-    {
-      label: "UNIVERSITY OF CALIFORNIA-SANTA CRUZ",
-      latitude: 36.9990184170001,
-      longitude: -122.060726126,
-      value: 8413429,
-    },
-    {
-      label: "UNIVERSITY OF OREGON",
-      latitude: 44.044515,
-      longitude: -123.07398,
-      value: 9306023,
-    },
-    {
-      label: "UNIVERSITY OF WASHINGTON-SEATTLE CAMPUS",
-      latitude: 47.655775179,
-      longitude: -122.310802164,
-      value: 9323535,
-    },
-  ];
+
+  useEffect(() => {
+    var collegesRef = rootRef
+      .child("college")
+      .orderByChild("AMOUNT")
+      .limitToFirst(collegesLimit);
+
+    return collegesRef.on("value", function (dataSnapshot) {
+      var colleges = [];
+      dataSnapshot.forEach(function (childSnapshot) {
+        colleges.push({
+          label: childSnapshot.val().NAME,
+          latitude: childSnapshot.val().LATITUDE,
+          longitude: childSnapshot.val().LONGITUDE,
+          value: -1 * childSnapshot.val().AMOUNT,
+        });
+      });
+      setMapData(colleges);
+    });
+  }, []);
 
   return (
     <div className="App">
