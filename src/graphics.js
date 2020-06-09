@@ -31,7 +31,7 @@ class Graphics extends Component {
     let chart = am4core.create("chartdiv", am4maps.MapChart);
 
     let title = chart.titles.create();
-    title.text = "[bold font-size: 20]Universities with Most Donations[/]";
+    title.text = "[bold font-size: 20]Top Ten Universities[/]";
     title.textAlign = "middle";
 
     // Set map definition
@@ -53,43 +53,7 @@ class Graphics extends Component {
     polygonTemplate.fill = am4core.color("#FF3600").lighten(0.2);
 
     let colorSet = new am4core.ColorSet();
-    let mapData = [
-      // {
-      //   label: "Stanford University",
-      //   latitude: 40.4167,
-      //   longitude: -3.7033,
-      //   value: 32358260,
-      //   color: colorSet.next(),
-      // },
-      // {
-      //   label: "University of Texas Austin",
-      //   latitude: 64.1353,
-      //   longitude: -21.8952,
-      //   value: 22605732,
-      //   color: colorSet.next(),
-      // },
-      {
-        label: "UNIVERSITY OF CALIFORNIA-SANTA CRUZ",
-        latitude: 36.9990184170001,
-        longitude: -122.060726126,
-        value: 8413429,
-        color: colorSet.next(),
-      },
-      {
-        label: "UNIVERSITY OF OREGON",
-        latitude: 44.044515,
-        longitude: -123.07398,
-        value: 9306023,
-        color: colorSet.next(),
-      },
-      {
-        label: "UNIVERSITY OF WASHINGTON-SEATTLE CAMPUS",
-        latitude: 47.655775179,
-        longitude: -122.310802164,
-        value: 9323535,
-        color: colorSet.next(),
-      },
-    ];
+
     let imageSeries = chart.series.push(new am4maps.MapImageSeries());
     imageSeries.mapImages.template.propertyFields.longitude = "longitude";
     imageSeries.mapImages.template.propertyFields.latitude = "latitude";
@@ -97,7 +61,7 @@ class Graphics extends Component {
     imageSeries.mapImages.template.tooltipText = "{label}: [bold]${value}";
 
     // let imageSeries = chart.series.push(new am4maps.MapImageSeries());
-    imageSeries.data = mapData;
+    imageSeries.data = this.props.mapData;
 
     // imageSeries.data = mapData;
     // imageSeries.dataFields.value = "value";
