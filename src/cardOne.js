@@ -58,10 +58,12 @@ const EnterAmountWidget = (props) => {
         props.setIsFirstCard(false);
         break;
       case "entry3":
-        //if(Number.isInteger(props.customAmount)){
-
-        props.setIsFirstCard(false);
-      //}
+        if(parseInt(props.customAmount) && props.customAmount > 0){
+          props.setIsFirstCard(false);
+        }
+        else{
+          document.getElementById("demo").innerHTML = "Please enter a valid donation amount!";
+        }
     }
   };
 
@@ -133,6 +135,7 @@ const EnterAmountWidget = (props) => {
           onChange={(event) => handleChange(props, event)}
         />
       </div>
+      <p id="demo"></p>
       <div
         className={css`
           display: flex;

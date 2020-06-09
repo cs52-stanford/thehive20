@@ -108,6 +108,7 @@
   margin-top: 0.5rem;
   font-size: 1rem;
   font-weight: 300;
+  font-family: "courier";
   border-radius: 0.25rem;
   border-color: rgb(206, 212, 218);
   height: calc(2.75em + 2px);
@@ -169,6 +170,7 @@
     bottom: 25px;
   }
 }
+
 
 /**
   Other helpful details for the header.js css:
