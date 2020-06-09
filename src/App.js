@@ -12,15 +12,18 @@ import rootRef from "./firebase.js";
 
 //the Donation component has been implemented for you.
 import Donation from "./donation.js";
+import { copyAllProperties } from "@amcharts/amcharts4/.internal/core/utils/Object";
 
 const App = () => {
 
   const donationsLimit = 100;
+  const collegesLimit = 10;
 
   const [sortby, setSortby] = useState("orderDate");
 
   const [donationsDate, setDonationsDate] = useState([]);
   const [donationsAmount, setDonationsAmount] = useState([]);
+  const [mapData, setMapData] = useState([]);
 
   useEffect(() => {
     var donationsRef = rootRef.child('donation')
@@ -50,12 +53,34 @@ const App = () => {
     })
   }, []);
 
+  
+
+  useEffect(() => {
+    var collegesRef = rootRef.child('college')
+      .orderByChild("AMOUNT")
+      .limitToFirst(collegesLimit);
+
+    return collegesRef.on('value', function(dataSnapshot) {
+      var colleges = [];
+      dataSnapshot.forEach(function(childSnapshot) {
+        colleges.push({
+          label: childSnapshot.val().NAME,
+          latitude: childSnapshot.val().LATITUDE,
+          longitude: childSnapshot.val().LONGITUDE,
+          value: -1*childSnapshot.val().AMOUNT
+        });
+      })
+      setMapData(colleges);
+    })
+  }, []);
+  
+
 
   return (
     <div className="App">
       <div className="container">
         <Header />
-        <Graphics />
+        <Graphics mapData={mapData}/>
         <DonateForm />
         <Leaderboard donationsA={donationsAmount} donationsD={donationsDate} setSortby={setSortby} sortby={sortby}/>
       </div>
