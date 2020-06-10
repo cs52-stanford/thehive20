@@ -56,30 +56,30 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    var collegesRef = rootRef.child('college')
+    var collegesRef = rootRef
+      .child("college")
       .orderByChild("AMOUNT")
       .limitToFirst(collegesLimit);
 
-    return collegesRef.on('value', function(dataSnapshot) {
+    return collegesRef.on("value", function (dataSnapshot) {
       var colleges = [];
-      dataSnapshot.forEach(function(childSnapshot) {
+      dataSnapshot.forEach(function (childSnapshot) {
         colleges.push({
           label: childSnapshot.val().NAME,
           latitude: childSnapshot.val().LATITUDE,
           longitude: childSnapshot.val().LONGITUDE,
-          value: -1*childSnapshot.val().AMOUNT
+          value: -1 * childSnapshot.val().AMOUNT,
         });
-      })
+      });
       setMapData(colleges);
-    })
+    });
   }, []);
-  
 
   return (
     <div className="App">
       <div className="container">
         <Header />
-        <Graphics mapData={mapData}/>
+        <Graphics mapData={mapData} />
         <DonateForm />
         <Leaderboard
           donationsA={donationsAmount}
