@@ -20,8 +20,14 @@ class Header extends Component {
         className={css`
           display: flex;
           flex-direction: row;
-          align-items: flex-end;
-          margin: 0 0 0 1rem;
+          align-items: center;
+          justify-content: space-between;
+          margin: 1rem 2rem 1rem 1rem;
+          color: #0072bc;
+          font-weight: 300;
+          border-bottom-style: solid;
+          border-color: black;
+          //font-family: Verdana, Geneva, sans-serif;
         `}
       >
         <div
@@ -37,21 +43,59 @@ class Header extends Component {
           className={css`
             display: flex;
             flex-direction: column;
-            flex-grow: 2;
+            justify-content: flex-end;
+            flex-grow: 3.5;
           `}
         >
-          <div className="colB">
-            <CountdownTimer />
+          <div
+            className={css`
+              display: flex;
+              flex-direction: column;
+              text-align: end;
+            `}
+          >
+            <div
+              className={css`
+                display: flex;
+                flex-direction: column;
+                font-size: 4rem;
+              `}
+            >
+              <CountdownTimer />
+            </div>
+            <div
+              className={css`
+                display: flex;
+                flex-direction: column;
+                margin-right: 4rem;
+              `}
+            >
+              <p3
+                className={css`
+                  display: flex;
+                  flex-direction: column;
+                  font-size: 2.5rem;
+                `}
+              >
+                {" "}
+                The ultimate college donation
+                <br></br>
+                competition supporting refugees run by
+              </p3>
+              <br></br>
+              <a
+                href="https://www.unrefugees.org"
+                class="logo"
+                className={css`
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: flex-end;
+                `}
+              >
+                <img src={unLogo} alt="UN_LOGO" height="100%" width="200vh" />
+              </a>
+            </div>
           </div>
-          <p3>
-            The ultimate college donation
-            <br></br>
-            competition supporting refugees run by
-          </p3>
-          <br></br>
-          <a href="https://www.unrefugees.org" class="logo">
-            <img src={unLogo} alt="UN_LOGO" height="50vh" width="100%" />
-          </a>
         </div>
       </div>
     );

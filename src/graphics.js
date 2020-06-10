@@ -17,13 +17,13 @@ import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
 
 function displayMap(props) {
   //theme
-  am4core.useTheme(am4themes_animated);
+  // am4core.useTheme(am4themes_animated);
 
   // Create map instance
   let chart = am4core.create("chartdiv", am4maps.MapChart);
 
   let title = chart.titles.create();
-  title.text = "[bold font-size: 20]Universities with Most Donations[/]";
+  // title.text = "[bold font-size: 20]Universities with Most Donations[/]";
   title.textAlign = "middle";
 
   // Set map definition
@@ -41,7 +41,6 @@ function displayMap(props) {
   // polygonSeries.calculateVisualCenter = true;
   // Configure series
   let polygonTemplate = polygonSeries.mapPolygons.template;
-  polygonTemplate.tooltipText = "{name}";
   polygonTemplate.fill = am4core.color("#FF3600").lighten(0.2);
 
   let colorSet = new am4core.ColorSet();
@@ -51,11 +50,20 @@ function displayMap(props) {
   imageSeries.mapImages.template.propertyFields.value = "value";
   imageSeries.mapImages.template.tooltipText = "{label}: [bold]${value}";
 
+  // let colorSet = (chart.colors.list = [
+  //   am4core.color("#845EC2"),
+  //   am4core.color("#D65DB1"),
+  //   am4core.color("#FF6F91"),
+  //   am4core.color("#FF9671"),
+  //   am4core.color("#FFC75F"),
+  //   am4core.color("#F9F871"),
+  // ]);
   // let imageSeries = chart.series.push(new am4maps.MapImageSeries());
   imageSeries.data = props.mapData.map((item) => {
     return {
       ...item,
-      color: colorSet.next(),
+      // color: colorSet.next(),
+      color: am4core.color("white"),
     };
   });
 
@@ -131,7 +139,18 @@ class Graphics extends Component {
   render() {
     return (
       <div>
-        <div id="chartdiv" style={{ width: "160vh", height: "100vh" }}></div>
+        <div
+          className={css`
+            font-size: 2rem;
+            font-weight: 300;
+            color: #ff3600;
+          `}
+        >
+          <p>Universities with Most Donations</p>
+        </div>
+        <div>
+          <div id="chartdiv" style={{ width: "160vh", height: "100vh" }}></div>
+        </div>
       </div>
     );
   }
