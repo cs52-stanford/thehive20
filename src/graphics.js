@@ -62,8 +62,8 @@ function displayMap(props) {
   imageSeries.data = props.mapData.map((item) => {
     return {
       ...item,
-      // color: colorSet.next(),
-      color: am4core.color("white"),
+      color: colorSet.next(),
+      //color: am4core.color("white"),
     };
   });
 
