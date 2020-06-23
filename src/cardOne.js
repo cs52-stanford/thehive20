@@ -4,6 +4,7 @@ import dots from "./images/dots.svg";
 import sockblack from "./images/sockblack.svg";
 import mealblack from "./images/mealblack.svg";
 import bedblack from "./images/bedblack.svg";
+// This is the first card on the donation form beneath map
 
 const SelectDonationButton = (props) => {
   const handleClick = (event) => {
@@ -39,19 +40,19 @@ const EnterAmountWidget = (props) => {
 
   const handleNext = (event) => {
     switch (props.selected) {
-      case "tree10":
+      case "amt1":
         props.setNumTrees(1);
         props.setIsFirstCard(false);
         break;
-      case "tree20":
+      case "amt5":
         props.setNumTrees(5);
         props.setIsFirstCard(false);
         break;
-      case "tree50":
+      case "amt10":
         props.setNumTrees(10);
         props.setIsFirstCard(false);
         break;
-      case "entry3":
+      case "amtCustom":
         if (parseInt(props.customAmount) && props.customAmount > 0) {
           props.setIsFirstCard(false);
         } else {
@@ -91,21 +92,21 @@ const EnterAmountWidget = (props) => {
         <SelectDonationButton
           selected={props.selected}
           setSelected={props.setSelected}
-          id={"tree10"}
+          id={"amt1"}
           amount={"1"}
           image={sockblack}
         />
         <SelectDonationButton
           selected={props.selected}
           setSelected={props.setSelected}
-          id={"tree20"}
+          id={"amt5"}
           amount={"5"}
           image={mealblack}
         />
         <SelectDonationButton
           selected={props.selected}
           setSelected={props.setSelected}
-          id={"tree50"}
+          id={"amt10"}
           amount={"10"}
           image={bedblack}
         />
@@ -118,11 +119,11 @@ const EnterAmountWidget = (props) => {
         `}
       >
         <textarea
-          id="entry3"
+          id="amtCustom"
           className="donation-text"
           value={props.customAmount}
           placeholder="custom amount"
-          onClick={(event) => props.setSelected("entry3")}
+          onClick={(event) => props.setSelected("amtCustom")}
           onChange={(event) => handleChange(props, event)}
         />
       </div>
@@ -143,7 +144,7 @@ const EnterAmountWidget = (props) => {
 };
 
 const First_Card = (props) => {
-  const default_button = "tree20";
+  const default_button = "amt5";
   const numTreesPlaceHolder = "other amount";
 
   const [customAmount, setCustomAmount] = useState();

@@ -66,7 +66,7 @@ const App = () => {
       setMapData(colleges);
     });
   }, []);
-
+  // displays the main components for the website in the return statement below
   return (
     <div className="App">
       <div className="container">
