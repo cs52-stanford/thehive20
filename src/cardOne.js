@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { css } from "emotion";
 import dots from "./images/dots.svg";
-import sockblack from "./images/sockblack.svg"
-import mealblack from "./images/mealblack.svg"
-import bedblack from "./images/bedblack.svg"
-
-
+import sockblack from "./images/sockblack.svg";
+import mealblack from "./images/mealblack.svg";
+import bedblack from "./images/bedblack.svg";
 
 const SelectDonationButton = (props) => {
-
   const handleClick = (event) => {
-    console.log(props.selected)
-    console.log(props.id)
+    console.log(props.selected);
+    console.log(props.id);
     props.setSelected(props.id);
   };
-
 
   return (
     <div
       className={
-        "tree-amount-button" +
-        (props.selected === props.id ? ' active' : '')
+        "amount-button" + (props.selected === props.id ? " active" : "")
       }
       id={props.id}
       onClick={(event) => handleClick(event)}
@@ -28,20 +23,19 @@ const SelectDonationButton = (props) => {
       <div> {props.amount} </div>
       <img
         src={props.image}
-        className={
-          css`max-width: 4.25rem;`
-        }
+        className={css`
+          max-width: 4.25rem;
+        `}
       ></img>
     </div>
   );
-}
+};
 
 const EnterAmountWidget = (props) => {
-
   const handleChange = (props, event) => {
     props.setCustomAmount(event.target.value);
     props.setNumTrees(event.target.value);
-  }
+  };
 
   const handleNext = (event) => {
     switch (props.selected) {
@@ -58,16 +52,14 @@ const EnterAmountWidget = (props) => {
         props.setIsFirstCard(false);
         break;
       case "entry3":
-        if(parseInt(props.customAmount) && props.customAmount > 0){
+        if (parseInt(props.customAmount) && props.customAmount > 0) {
           props.setIsFirstCard(false);
-        }
-        else{
-          document.getElementById("demo").innerHTML = "Please enter a valid donation amount!";
+        } else {
+          document.getElementById("demo").innerHTML =
+            "Please enter a valid donation amount!";
         }
     }
   };
-
-
 
   return (
     <div id="widget-style">
@@ -88,7 +80,6 @@ const EnterAmountWidget = (props) => {
             max-width: 2.25rem;
           `}
         />
-
       </div>
       <div
         className={css`
@@ -131,7 +122,7 @@ const EnterAmountWidget = (props) => {
           className="donation-text"
           value={props.customAmount}
           placeholder="custom amount"
-          onClick={(event) => props.setSelected('entry3')}
+          onClick={(event) => props.setSelected("entry3")}
           onChange={(event) => handleChange(props, event)}
         />
       </div>

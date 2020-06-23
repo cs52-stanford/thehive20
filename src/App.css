@@ -114,7 +114,7 @@
   height: calc(2.75em + 2px);
 }
 
-.tree-amount-button {
+.amount-button {
   flex-basis: 31%;
   max-width: 31%;
   text-transform: uppercase;

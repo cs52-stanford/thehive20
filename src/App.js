@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Graphics from "./graphics.js";
-import DonateForm from "./DonateForm.js";
+import DonateForm from "./donateform.js";
 import Leaderboard from "./leaderboard.js";
-import avatar from "./images/icon-badge-grove-2.svg";
 import Header from "./header.jsx";
 
-import { css } from "emotion";
-import moment from "moment";
 import "./App.css";
 import rootRef from "./firebase.js";
-import * as am4core from "@amcharts/amcharts4/core";
-
-//the Donation component has been implemented for you.
-import Donation from "./donation.js";
-import { copyAllProperties } from "@amcharts/amcharts4/.internal/core/utils/Object";
 
 const App = () => {
   const donationsLimit = 100;
