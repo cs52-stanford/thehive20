@@ -41,6 +41,7 @@ const App = () => {
     return donationsRef.on("value", function (dataSnapshot) {
       var donates = [];
       dataSnapshot.forEach(function (childSnapshot) {
+        donates.push(childSnapshot.val());
       });
       setDonationsAmount(donates);
     });
