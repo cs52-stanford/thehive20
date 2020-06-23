@@ -2,10 +2,10 @@ import React from "react";
 import { css } from "emotion";
 import moment from "moment";
 
-const Donation = (props) => {
-  
-  //var date = moment().format("L h:mm:ss A");
+//formats the donation for leaderboard
 
+const Donation = (props) => {
+  //var date = moment().format("L h:mm:ss A");
   return (
     <div
       className={css`
@@ -32,10 +32,7 @@ const Donation = (props) => {
       />
 
       <span
-    //var date = moment().format("L h:mm:ss A");
-  
-    //return (
-      //<div
+        //var date = moment().format("L h:mm:ss A");
         className={css`
           display: flex;
           flex-direction: column;
@@ -74,7 +71,7 @@ const Donation = (props) => {
               align-items: center;
             `}
           >
-            {props.numTrees} 
+            {props.numTrees}
           </span>
         </span>
 

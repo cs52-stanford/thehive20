@@ -7,6 +7,7 @@ import moment from "moment";
 import { csv } from "d3-request";
 import colleges from "./CollegesForHive.csv";
 
+// When you click next button this is the second card that is displayed on donation form beneath map
 const handleChange = (props, event) => {
   let curr_id = event.target.id;
   switch (curr_id) {

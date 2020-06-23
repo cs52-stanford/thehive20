@@ -7,6 +7,7 @@ import Header from "./header.jsx";
 import "./App.css";
 import rootRef from "./firebase.js";
 
+//component that contains all other components in the application
 const App = () => {
   const donationsLimit = 100;
   const collegesLimit = 10;

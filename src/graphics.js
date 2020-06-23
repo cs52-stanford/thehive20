@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-
-// This is one way to write CSS
-// Read more about it here:
-//https://emotion.sh/docs/introduction
-// For this assignment we recommend using emotion.
-// The header div below has been styled using the canonical emotion syntax
-// Feel free to copy and reuse in all your components.
 import { css } from "emotion";
-
-//Here is all the image files that you need
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
@@ -16,15 +7,13 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
 
 function displayMap(props) {
-  //theme
-  // am4core.useTheme(am4themes_animated);
-
   // Create map instance
   let chart = am4core.create("chartdiv", am4maps.MapChart);
 
-  let title = chart.titles.create();
+  // added seperate text for title since this built in title difficult to css style
+  //let title = chart.titles.create();
   // title.text = "[bold font-size: 20]Universities with Most Donations[/]";
-  title.textAlign = "middle";
+  // title.textAlign = "middle";
 
   // Set map definition
   chart.geodata = am4geodata_usaHigh;
@@ -69,20 +58,10 @@ function displayMap(props) {
 
   console.log(imageSeries.data);
 
-  // imageSeries.data = mapData;
-  // imageSeries.dataFields.value = "value";
-  // let imageTemplate = imageSeries.mapImages.template;
-  // imageTemplate.propertyFields.value = "value";
-  // imageTemplate.propertyFields.longitude = "longitude";
-  // imageTemplate.propertyFields.latitude = "latitude";
-  // imageTemplate.tooltipText = "{title}: [bold]{value}[/]";
-  // imageTemplate.nonScaling = true;
-
   let circle = imageSeries.mapImages.template.createChild(am4core.Circle);
   circle.propertyFields.fill = "color";
 
   let circle2 = imageSeries.mapImages.template.createChild(am4core.Circle);
-  // circle2.radius = 7;
   circle2.propertyFields.fill = "color";
 
   imageSeries.heatRules.push({

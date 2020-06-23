@@ -3,6 +3,7 @@ import { css } from "emotion";
 
 function CountdownTimer() {
   const calculateTimeLeft = () => {
+    //to modify which day countdown timer will end modify the string in newDate("   ")
     const difference = +new Date("2021-01-01") - +new Date();
     let timeLeft = {};
 
@@ -29,43 +30,34 @@ function CountdownTimer() {
   const timerLabels = [];
 
   Object.keys(timeLeft).forEach((interval) => {
-    // if (!timeLeft[interval]) {
-
-    //   return;
-    // }
-
     timerComponents.push(<span>{timeLeft[interval]} </span>);
     timerLabels.push(<span>{interval} </span>);
   });
 
   return (
-    <div>
-      {/* <h1>Donations</h1> */}
+    <div
+      className={css`
+        display: flex;
+        flex-direction: column;
+      `}
+    >
       <div
         className={css`
           display: flex;
-          flex-direction: column;
-          // align-items: flex-start;
+          flex-direction: row;
+          justify-content: space-evenly;
         `}
       >
-        <div
-          className={css`
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-          `}
-        >
-          {timerComponents.length ? timerComponents : <span>Time's up!</span>}
-        </div>
-        <div
-          className={css`
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-          `}
-        >
-          {timerLabels}
-        </div>
+        {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      </div>
+      <div
+        className={css`
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+        `}
+      >
+        {timerLabels}
       </div>
     </div>
   );

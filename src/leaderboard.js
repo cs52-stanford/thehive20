@@ -5,13 +5,11 @@ import { css } from "emotion";
 import moment from "moment";
 
 import Donation from "./donation.js";
-//import avatar from "./images/icon-badge-grove-2.svg";
-import sock from "./images/sock.svg"
-import meal from "./images/meal.svg"
-import lamp from "./images/lamp.svg"
-import bed from "./images/bed.svg"
-import house from "./images/house.svg"
-import { time } from "@amcharts/amcharts4/core";
+import sock from "./images/sock.svg";
+import meal from "./images/meal.svg";
+import lamp from "./images/lamp.svg";
+import bed from "./images/bed.svg";
+import house from "./images/house.svg";
 
 var emily = house;
 
@@ -32,42 +30,40 @@ const handleClick = (props, event) => {
 const SortByWidget = (props) => {
   return (
     <div
-              className={css`
-                display: flex;
-                flex-direction: column;
-                flex-direction: row;
-                color: #4b7330;
-                background-color: #f6f6f4;
-                padding: 0.5rem 0.25rem 0.5rem;
-                border-bottom: 1px solid #eee;
-                text-transform: uppercase !important;
-                text-align: center !important;
-                box-sizing: border-box;
-                font-size: 1rem;
-                font-weight: 600;
-              `}
-            >
+      className={css`
+        display: flex;
+        flex-direction: column;
+        flex-direction: row;
+        color: #4b7330;
+        background-color: #f6f6f4;
+        padding: 0.5rem 0.25rem 0.5rem;
+        border-bottom: 1px solid #eee;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        box-sizing: border-box;
+        font-size: 1rem;
+        font-weight: 600;
+      `}
+    >
       <div
-        className='donation-sort active'
+        className="donation-sort active"
         id="sortTime"
         onClick={(event) => handleClick(props, event)}
       >
         Most Recent
       </div>
       <div
-        className='donation-sort'
+        className="donation-sort"
         id="sortAmount"
         onClick={(event) => handleClick(props, event)}
       >
-        Most 
+        Most
       </div>
     </div>
   );
 };
 
-
 const Leaderboard = (props) => {
-
   const default_button = "sortTime";
 
   const [selectedButton, setSelectedButton] = useState(default_button);
@@ -116,64 +112,59 @@ const Leaderboard = (props) => {
               setSelected={setSelectedButton}
               setSortby={props.setSortby}
             />
-            <div style={{height: '500px', overflowY:'scroll'}} className={css`
+            <div
+              style={{ height: "500px", overflowY: "scroll" }}
+              className={css`
                 color: #4b7330;
                 background-color: #f6f6f4;
                 padding: 1rem 1.25rem 0.8rem;
-              `}>
-              {props.sortby == "orderDate" ?
-              props.donationsD.map((item) => {
-                item.avatar = house;
-                if (item.numTrees < 5){
-                  item.avatar = sock;
-                }
-                else if (item.numTrees < 10){
-                  item.avatar = meal;
-                }
-                else if (item.numTrees < 50){
-                  item.avatar = bed;
-                }
-                else if (item.numTrees < 60){
-                  item.avatar = lamp;
-                }
-                return (
-                  <Donation
-                    key = {item.key}
-                    avatar={item.avatar}
-                    name={item.displayName}
-                    numTrees={item.numTrees}
-                    message={item.message}
-                    date={item.date}
-                  />
-                )
-              }) : 
-              props.donationsA.map((item) => {
-                item.avatar = house;
-                if (item.numTrees < 5){
-                  item.avatar = sock;
-                }
-                else if (item.numTrees < 10){
-                  item.avatar = meal;
-                }
-                else if (item.numTrees < 50){
-                  item.avatar = bed;
-                }
-                else if (item.numTrees < 60){
-                  item.avatar = lamp;
-                }
-                return (
-                  <Donation
-                    key = {item.key}
-                    avatar={item.avatar}
-                    name={item.displayName}
-                    numTrees={item.numTrees}
-                    message={item.message}
-                    date={item.date}
-                  />
-                )
-              })
-              }
-
+              `}
+            >
+              {props.sortby == "orderDate"
+                ? props.donationsD.map((item) => {
+                    item.avatar = house;
+                    if (item.numTrees < 5) {
+                      item.avatar = sock;
+                    } else if (item.numTrees < 10) {
+                      item.avatar = meal;
+                    } else if (item.numTrees < 50) {
+                      item.avatar = bed;
+                    } else if (item.numTrees < 60) {
+                      item.avatar = lamp;
+                    }
+                    return (
+                      <Donation
+                        key={item.key}
+                        avatar={item.avatar}
+                        name={item.displayName}
+                        numTrees={item.numTrees}
+                        message={item.message}
+                        date={item.date}
+                      />
+                    );
+                  })
+                : props.donationsA.map((item) => {
+                    item.avatar = house;
+                    if (item.numTrees < 5) {
+                      item.avatar = sock;
+                    } else if (item.numTrees < 10) {
+                      item.avatar = meal;
+                    } else if (item.numTrees < 50) {
+                      item.avatar = bed;
+                    } else if (item.numTrees < 60) {
+                      item.avatar = lamp;
+                    }
+                    return (
+                      <Donation
+                        key={item.key}
+                        avatar={item.avatar}
+                        name={item.displayName}
+                        numTrees={item.numTrees}
+                        message={item.message}
+                        date={item.date}
+                      />
+                    );
+                  })}
             </div>
             <div
               className={css`
