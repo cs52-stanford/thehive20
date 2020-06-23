@@ -41,7 +41,6 @@ const App = () => {
     return donationsRef.on("value", function (dataSnapshot) {
       var donates = [];
       dataSnapshot.forEach(function (childSnapshot) {
-        donates.push(childSnapshot.val());
       });
       setDonationsAmount(donates);
     });
@@ -56,12 +55,14 @@ const App = () => {
     return collegesRef.on("value", function (dataSnapshot) {
       var colleges = [];
       dataSnapshot.forEach(function (childSnapshot) {
-        colleges.push({
-          label: childSnapshot.val().NAME,
-          latitude: childSnapshot.val().LATITUDE,
-          longitude: childSnapshot.val().LONGITUDE,
-          value: -1 * childSnapshot.val().AMOUNT,
-        });
+        if (-1 * childSnapshot.val().AMOUNT > 0) {
+          colleges.push({
+            label: childSnapshot.val().NAME,
+            latitude: childSnapshot.val().LATITUDE,
+            longitude: childSnapshot.val().LONGITUDE,
+            value: -1 * childSnapshot.val().AMOUNT,
+          });
+        }
       });
       setMapData(colleges);
     });
